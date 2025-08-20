@@ -1,73 +1,74 @@
-Day 1: Raspberry Pi – LED & LCD Controller
+# Day 1: Raspberry Pi – LED & LCD Controller  
+
+This is the **first project** in my **“10 Days, 10 Projects”** series using the Raspberry Pi.  
 
 ![LED_Controller](Day1_LED_Controller.jpg)
 
-This is the first project in my “10 Days, 10 Projects” series using the Raspberry Pi.
-The script allows a user to control an LED with a push button, cycling through four different modes:
+The script allows a user to control an LED with a push button, cycling through **four modes**:  
 
-🔴 OFF
+- 🔴 **OFF**  
+- 🟢 **ON**  
+- ✨ **Blinking**  
+- 🌗 **Fading (brightness control)**  
 
-🟢 ON
+The **current mode** is displayed on a **16x2 I²C LCD screen**.  
 
-✨ Blinking
+---
 
-🌗 Fading (brightness control)
+## 🛠 Hardware Required  
 
-The current mode is displayed on a 16x2 I²C LCD screen.
+- Raspberry Pi (3B+ or similar)  
+- 1 × LED (any color)  
+- 1 × 330Ω Resistor (for the LED)  
+- 1 × Push Button  
+- 1 × 16x2 I²C LCD Display  
+- Breadboard + Jumper Wires  
 
-🛠️ Hardware Required
+---
 
-Raspberry Pi (3B+ or similar)
+## ⚙️ Setup and Installation  
 
-1 × LED (any color)
+### 1. Enable I²C Interface  
+The LCD uses the I²C protocol.
+- Enable it with:  
 
-1 × 330Ω Resistor (for the LED)
-
-1 × Push Button
-
-1 × 16x2 I²C LCD Display
-
-Breadboard + Jumper Wires
-
-⚙️ Setup and Installation
-1. Enable I²C Interface
-
-The LCD uses the I²C protocol. You need to enable it:
-
+```bash
 sudo raspi-config
+```
 
-Go to: 3 Interface Options → I5 I²C
+- Navigate to the following menu:
+- 
+```bash
+3 Interface Options → I5 I2C
+```
 
-Select Yes
+- Select Yes to enable the interface and reboot if prompted.
 
-Reboot if prompted
+### 2. Install LCD Library
 
-2. Install LCD Library
+This project requires the RPLCD Python library. On recent versions of Raspberry Pi OS, you must override the system package protection.
 
-This project uses the RPLCD Python library.
-On recent Raspberry Pi OS versions, install it with:
-
+```bash
 pip install RPLCD --break-system-packages
+```
 
-3. Check LCD Address
+### 3. Check LCD Address
 
-Find your LCD’s I²C address before running the script:
+Before running the script, find your LCD’s unique I²C address.
 
+```bash
 i2cdetect -y 1
+```
+You’ll see a value like **27** or **3f**.
 
+👉 Important: Update the address variable in the Python script to match this value.
 
-You’ll see a value like 0x27 or 0x3F.
-👉 Update the address variable in the Python script accordingly.
+### Running the Script
 
-▶️ Running the Script
+Navigate to the project directory in your terminal and run the main Python file:
 
-Navigate to the project directory and run:
-
+```bash
 python3 led_controller.py
+```
 
-
-The LCD will display a startup message
-
-Press the push button to cycle through LED modes
-
-Press CTRL + C to stop the program
+The LCD will display a startup message. You can then press the push button to cycle through the different LED modes. To stop the program, press **CTRL + C**.
