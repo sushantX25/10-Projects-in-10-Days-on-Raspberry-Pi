@@ -79,9 +79,10 @@ Run the script:
 ```bash
 python3 weather_station_web.py
 ```
+### Accessing the Web Interface
+
 ![Web](web_server.png)
 
-### Accessing the Web Interface
 Find your Raspberry Pi's IP address:
 ```bash
 hostname -I
@@ -90,9 +91,11 @@ Then open any device on the same network and go to:
 ```bash
 http://<YOUR_PI_IP>:8000
 ```
-![Data](weather_data.png)
 
 ### 📊 Data Logging
+
+![Data](weather_data.png)
+
 The script automatically creates and appends data to a file named **sensor_data.csv** in the same directory.
 
 **Frequency:** Data is logged every 10 minutes.
