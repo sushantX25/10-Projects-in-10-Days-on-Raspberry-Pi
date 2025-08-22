@@ -88,6 +88,13 @@ Then open any device on the same network and go to:
 ```bash
 http://<YOUR_PI_IP>:8000
 ```
+### 📊 Data Logging
+The script automatically creates and appends data to a file named **sensor_data.csv** in the same directory.
 
+**Frequency:** Data is logged every 10 minutes.
+
+**First Entry:** The very first successful sensor reading is logged immediately upon starting the script.
+
+**Format:** The CSV file contains three columns: Timestamp, Temperature (C), and Humidity (%).
 **👤 Author
 Sushant Sharma**
