@@ -96,5 +96,6 @@ The script automatically creates and appends data to a file named **sensor_data.
 **First Entry:** The very first successful sensor reading is logged immediately upon starting the script.
 
 **Format:** The CSV file contains three columns: Timestamp, Temperature (C), and Humidity (%).
+
 **👤 Author
 Sushant Sharma**
